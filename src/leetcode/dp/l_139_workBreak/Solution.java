@@ -1,4 +1,4 @@
-package leetcode.l_139_workBreak;
+package leetcode.dp.l_139_workBreak;
 
 import java.util.ArrayList;
 import java.util.Arrays;
