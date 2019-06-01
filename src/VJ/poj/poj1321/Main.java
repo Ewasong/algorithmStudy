@@ -1,4 +1,4 @@
-package VJ.poj1321;
+package VJ.poj.poj1321;
 
 import java.util.Arrays;
 import java.util.Scanner;
