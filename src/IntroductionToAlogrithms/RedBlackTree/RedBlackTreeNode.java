@@ -59,7 +59,7 @@ public class RedBlackTreeNode {
     /***
      * 左旋
      * @param tree
-     * @param nodeX
+     * @param x
      */
     public static void leftRotate(RedBlackTree tree, RedBlackTreeNode x) {
         RedBlackTreeNode y = x.right;
@@ -76,7 +76,6 @@ public class RedBlackTreeNode {
         if (x.parent == nil) {
             tree.setRoot(y);
         } else if (x == x.parent.left) {
-
             x.parent.left = y;
         } else {
             x.parent.right = y;
@@ -89,7 +88,7 @@ public class RedBlackTreeNode {
     /***
      * 右旋
      * @param tree
-     * @param nodeY
+     * @param y
      */
     public static void rightRotate(RedBlackTree tree, RedBlackTreeNode y) {
         RedBlackTreeNode x = y.left;
