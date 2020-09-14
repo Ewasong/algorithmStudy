@@ -1,8 +1,11 @@
 package leetcode.l_4_findMedianSortedArrays;
 
+//ac
 public class Solution {
     public static void main(String[] args) {
-
+        int nums1[] = {1, 2};
+        int nums2[] = {3, 4};
+        System.out.println(new Solution().findMedianSortedArrays(nums1, nums2));
     }
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
