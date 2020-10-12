@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Created by 81929 on 2019/6/1.
  */
-//https://vjudge.net/problem/POJ-3279
+//https://vjudge.net/problem/POJ-3279 ac
 //todo 有更好的做法
 //要将一个M * N的黑白色相间的格子翻转为白色（翻转可会使指定格子以及其上下左右相邻的格子反色），并求出最优解
 
