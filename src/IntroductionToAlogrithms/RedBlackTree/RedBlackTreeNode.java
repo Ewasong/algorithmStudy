@@ -98,13 +98,13 @@ public class RedBlackTreeNode {
             x.right.parent = y;
         }
 
-        y.parent = x;
+        x.parent = y.parent;
         if (y.parent == nil) {
             tree.setRoot(x);
         } else if (y.parent.left == y) {
-            y.parent.left = y;
+            y.parent.left = x;
         } else {
-            y.parent.right = y;
+            y.parent.right = x;
         }
         // y 变成x的儿子
         x.right = y;
@@ -168,18 +168,21 @@ public class RedBlackTreeNode {
 
                     //因为z的祖父已经满足性质了，要维护的只是z祖父的祖先们
                     z = z.parent.parent;
-                } else if (z == z.parent.right) {
-                    //情况2 叔结点黑色，z是父亲的右边儿子
-                    // 此时直接在z的父亲上做左旋，变成第3情况
-                    z = z.parent;
-                    leftRotate(tree, z);
-                }
-                // 情况3 叔结点是黑色 (情况1和情况2处理后都成为了情况3)
-                // 把父亲染色成为黑色，把祖父染成红色，此时左边黑高多了1，右旋祖父维护平衡
-                z.parent.color = colorBlack;
-                z.parent.parent.color = colorRed;
+                } else {
+                    if (z == z.parent.right) {
+                        //情况2 叔结点黑色，z是父亲的右边儿子
+                        // 此时直接在z的父亲上做左旋，变成第3情况
+                        z = z.parent;
+                        leftRotate(tree, z);
+                    }
+                    // 情况3 叔结点是黑色 (情况1和情况2处理后都成为了情况3)
+                    // 把父亲染色成为黑色，把祖父染成红色，此时左边黑高多了1，右旋祖父维护平衡
+                    z.parent.color = colorBlack;
+                    z.parent.parent.color = colorRed;
 
-                rightRotate(tree, z.parent.parent);
+                    rightRotate(tree, z.parent.parent);
+                }
+
             } else {
                 // z的父亲是右(直接把左儿子的代码复制过来，然后左右调换即可。
                 //y是z的叔叔
@@ -196,18 +199,21 @@ public class RedBlackTreeNode {
 
                     //因为z的祖父已经满足性质了，要维护的只是z祖父的祖先们
                     z = z.parent.parent;
-                } else if (z == z.parent.left) {
-                    //情况2 叔结点黑色，z是父亲的左边儿子
-                    // 此时直接在z的父亲上做右旋，变成第3情况
-                    z = z.parent;
-                    rightRotate(tree, z);
-                }
-                // 情况3 叔结点是黑色 (情况1和情况2处理后都成为了情况3)
-                // 把父亲染色成为黑色，把祖父染成红色，此时左边黑高多了1，左旋祖父维护平衡
-                z.parent.color = colorBlack;
-                z.parent.parent.color = colorRed;
+                } else {
+                    if (z == z.parent.left) {
+                        //情况2 叔结点黑色，z是父亲的左边儿子
+                        // 此时直接在z的父亲上做右旋，变成第3情况
+                        z = z.parent;
+                        rightRotate(tree, z);
+                    }
+                    // 情况3 叔结点是黑色 (情况1和情况2处理后都成为了情况3)
+                    // 把父亲染色成为黑色，把祖父染成红色，此时左边黑高多了1，左旋祖父维护平衡
+                    z.parent.color = colorBlack;
+                    z.parent.parent.color = colorRed;
 
-                leftRotate(tree, z.parent.parent);
+                    leftRotate(tree, z.parent.parent);
+                }
+
             }
         }
 
